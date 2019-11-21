@@ -1,7 +1,7 @@
 import Admin from '../models/Admin.model';
 import Employee from '../models/Employee.model';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import config from '../config';
 
 class AdminController {
