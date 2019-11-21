@@ -4,14 +4,14 @@
   "description": "",
   "main": "API/app.js",
   "scripts": {
-    "build": "babel src --out-dir build",
+    "build": "babel API --out-dir build",
     "clean": "rimraf build",
     "prebuild": "npm run prettiest && npm run clean && npm run prettier",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./UI,./README.md",
     "dev": "nodemon --exec babel-node API/app.js",
     "start": "node API/build/app.js",
     "prettiest": "eslint --ignore-path .gitignore src/ --fix",
-    "prettier": "prettier --single-quote --tab-width 4 --trailing-comma es5 --print-width 80 --write --no-bracket-spacing src/**/*.js",
+    "prettier": "prettier --single-quote --tab-width 4 --trailing-comma es5 --print-width 80 --write --no-bracket-spacing API/**/*.js",
     "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit",
     "lint": "./node_modules/.bin/eslint ."
   },
