@@ -10,7 +10,7 @@
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./UI,./README.md",
     "dev": "nodemon --exec babel-node API/app.js",
     "start": "node API/build/app.js",
-    "prettiest": "eslint --ignore-path .gitignore src/ --fix",
+    "prettiest": "eslint --ignore-path .gitignore API/ --fix",
     "prettier": "prettier --single-quote --tab-width 4 --trailing-comma es5 --print-width 80 --write --no-bracket-spacing API/**/*.js",
     "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit",
     "lint": "./node_modules/.bin/eslint ."
