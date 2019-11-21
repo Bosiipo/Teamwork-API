@@ -5,15 +5,15 @@
   "main": "API/app.js",
   "scripts": {
     "build": "babel src --out-dir build",
-    "clean": "rimraf build",
-    "prebuild": "npm run prettiest && npm run clean && npm run prettier",
-    "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./UI,./README.md",
+    "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./.eslintrc.js,./README.md",
+    "clean": "rimraf .cache .tmp lib build",
     "dev": "nodemon --exec babel-node API/app.js",
-    "start": "node API/build/app.js",
+    "lint": "./node_modules/.bin/eslint --fix --ignore-path .gitignore .",
+    "prebuild": "npm run prettiest && npm run clean && npm run prettier",
+    "prettier": "./node_modules/.bin/prettier --single-quote --trailing-comma es5 --print-width 80 --write --no-bracket-spacing **/*.js",
     "prettiest": "eslint --ignore-path .gitignore API/ --fix",
-    "prettier": "prettier --single-quote --tab-width 4 --trailing-comma es5 --print-width 80 --write --no-bracket-spacing API/**/*.js",
-    "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit",
-    "lint": "./node_modules/.bin/eslint ."
+    "start": "node API/app.js",
+    "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit"
   },
   "engines": {
     "node": "11.13.0",
