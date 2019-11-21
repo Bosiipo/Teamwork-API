@@ -4,17 +4,20 @@
   "description": "",
   "main": "API/app.js",
   "scripts": {
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "clean": "rmdir /s /q node_modules",
-    "rebuild": "npm run clean && npm install && npm run build",
+    "build": "babel src --out-dir build",
+    "clean": "rimraf build",
+    "prebuild": "npm run prettiest && npm run clean && npm run prettier",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./UI,./README.md",
     "dev": "nodemon --exec babel-node API/app.js",
     "start": "node API/build/app.js",
+    "prettiest": "eslint --ignore-path .gitignore src/ --fix",
+    "prettier": "prettier --single-quote --tab-width 4 --trailing-comma es5",
     "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit",
     "lint": "./node_modules/.bin/eslint ."
   },
   "engines": {
-    "node": "11.13.0"
+    "node": "11.13.0",
+    "npm": "6.13.1"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
