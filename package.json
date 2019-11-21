@@ -4,7 +4,7 @@
   "description": "",
   "main": "API/app.js",
   "scripts": {
-    "build": "babel API --out-dir build",
+    "build": "babel src --out-dir build",
     "clean": "rimraf build",
     "prebuild": "npm run prettiest && npm run clean && npm run prettier",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./coverage,./.babelrc,./package.json,./.travis.yml,./.eslintrc.js,./UI,./README.md",
