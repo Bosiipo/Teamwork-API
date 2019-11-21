@@ -28,11 +28,14 @@
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.0.0-bridge.0",
-    "@babel/node": "^7.7.0",
+    "@babel/core": "^7.7.2",
     "@babel/polyfill": "^7.7.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
+    "babel-cli": "^7.0.0-beta.3",
+    "babel-core": "^7.0.0-beta.3",
+    "babel-loader": "^8.0.0-beta.6",
+    "babel-preset-env": "^7.0.0-beta.3",
     "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -47,7 +50,7 @@
     "sequelize": "^5.21.2"
   },
   "devDependencies": {
-    "@babel/node": "^7.0.0",
+    "@babel/node": "^7.7.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^6.6.0",
