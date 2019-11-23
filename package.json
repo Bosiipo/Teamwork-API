@@ -7,7 +7,7 @@
     "build": "babel API --out-dir build",
     "dev": "nodemon --exec babel-node API/app.js",
     "lint": "./node_modules/.bin/eslint .",
-    "prebuild": "npm run prettiest && npm run clean && npm run prettier",
+    "prebuild": "npm run clean && npm run prettier",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./.eslintrc.js,./README.md",
     "start": "node API/app.js",
     "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit"
