@@ -8,6 +8,7 @@
     "dev": "nodemon --exec babel-node API/app.js",
     "lint": "./node_modules/.bin/eslint .",
     "prebuild": "rimraf build",
+    "prettiest": "eslint --ignore-path .gitignore API/ --fix",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./.eslintrc.js,./README.md",
     "start": "node API/app.js",
     "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit"
