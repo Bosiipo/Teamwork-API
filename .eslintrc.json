@@ -1,14 +1,22 @@
 {
-  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
+  "extends": ["airbnb", "prettier", "plugin:node/recommended", "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"],
   "plugins": ["prettier"],
   "rules": {
-    "eslint-quotes": ["error", "double"],
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "no-console": "off",
     "func-names": "off",
     "no-process-exit": "off",
     "class-methods-use-this": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   },
   "parserOptions": {
     "sourceType": "module"

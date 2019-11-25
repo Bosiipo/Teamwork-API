@@ -1,4 +1,4 @@
-import '@babel/polyfill';
+import '@babel/polyfills';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
