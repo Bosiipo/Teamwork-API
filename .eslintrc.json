@@ -2,11 +2,15 @@
   "extends": ["airbnb", "prettier", "plugin:node/recommended"],
   "plugins": ["prettier"],
   "rules": {
+    "eslint-quotes": ["error", "double"],
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "no-console": "off",
     "func-names": "off",
     "no-process-exit": "off",
     "class-methods-use-this": "off"
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
