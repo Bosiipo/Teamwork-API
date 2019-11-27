@@ -13,7 +13,6 @@ class AdminController {
         throw new Error('Incorrect parameters');
       }
       const hashedPassword = await bcrypt.hashSync(password, 10);
-      //   console.log(hashedPassword);
       const emailIni = await Admin.findOne({ where: { email } });
       if (emailIni) {
         throw new Error('Admin already exists');
@@ -155,6 +154,27 @@ class AdminController {
       return res.status(500).json({
         error: err,
         message: err.message
+      });
+    }
+  }
+
+  static async getEmployeeProfile(req, res) {
+    try {
+      const { id } = req.params;
+      const employee = await Employee.findOne({ where: { id } });
+      if (!id) {
+        throw new Error('Invalid parameter');
+      }
+      return res.status(200).json({
+        status: 'success',
+        data: {
+          employee
+        }
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: error,
+        message: error.message
       });
     }
   }

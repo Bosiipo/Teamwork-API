@@ -19,5 +19,4 @@ router.patch(
   ArticleController.editArticle
 );
 
-
 export default router;
