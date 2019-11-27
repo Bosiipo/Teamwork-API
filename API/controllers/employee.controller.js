@@ -1,6 +1,6 @@
-import Employee from '../models/employee.model';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import Employee from '../models/Employee.model';
 import config from '../config';
 import Article from '../models/Article.model';
 import Gif from '../models/Gif.model';

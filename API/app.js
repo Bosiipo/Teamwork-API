@@ -1,8 +1,9 @@
-import '@babel/polyfills';
+import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import fileUpload from 'express-fileupload';
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -11,6 +12,7 @@ const VERSION_API = '/api/v1';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
+app.use(cors());
 
 // Database
 import db from './config/database';

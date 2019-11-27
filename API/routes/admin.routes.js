@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import {Router} from 'express';
 
 // Controller
 import AdminController from '../controllers/admin.controller';
@@ -9,9 +9,9 @@ const router = Router();
 router.post('/register', AdminController.registerAdmin);
 router.post('/login', AdminController.loginAdmin);
 router.post(
-  '/create-user',
-  AuthController.verifyAdmin,
-  AdminController.createEmployee
+    '/create-user',
+    AuthController.verifyAdmin,
+    AdminController.createEmployee
 );
 
 export default router;

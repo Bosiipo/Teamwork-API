@@ -15,8 +15,8 @@ class ArticleController {
       });
     } catch (error) {
       return res.status(500).json({
-        status: err,
-        message: err.message
+        status: error,
+        message: error.message
       });
     }
   }

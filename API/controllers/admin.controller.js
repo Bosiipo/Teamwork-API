@@ -1,7 +1,8 @@
+/* eslint-disable node/no-unsupported-features/es-syntax */
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import Admin from '../models/Admin.model';
 import Employee from '../models/Employee.model';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
 import config from '../config';
 
 class AdminController {
@@ -13,7 +14,7 @@ class AdminController {
       }
       const hashedPassword = await bcrypt.hashSync(password, 10);
       //   console.log(hashedPassword);
-      const emailIni = await Admin.findOne({ where: { email: email } });
+      const emailIni = await Admin.findOne({ where: { email } });
       if (emailIni) {
         throw new Error('Admin already exists');
       }
@@ -49,6 +50,7 @@ class AdminController {
       });
     }
   }
+
   static async loginAdmin(req, res, next) {
     try {
       const { email, password } = req.body;
@@ -87,6 +89,7 @@ class AdminController {
       });
     }
   }
+
   static async createEmployee(req, res) {
     try {
       const {
@@ -113,7 +116,7 @@ class AdminController {
       }
       const adminId = req.admin.id;
       const hashedPassword = await bcrypt.hashSync(password, 10);
-      const emailIni = await Employee.findOne({ where: { email: email } });
+      const emailIni = await Employee.findOne({ where: { email } });
       if (emailIni) {
         throw new Error(`Employee already exists!`);
       }

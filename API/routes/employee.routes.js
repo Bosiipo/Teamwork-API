@@ -7,7 +7,6 @@ import ArticleController from '../controllers/article.controller';
 
 const router = Router();
 
-// router.post('/register', EmployeeController.registerEmployee);
 router.post('/login', EmployeeController.loginEmployee);
 router.post(
   '/create-article',
@@ -19,5 +18,6 @@ router.patch(
   AuthController.verifyEmployee,
   ArticleController.editArticle
 );
+
 
 export default router;

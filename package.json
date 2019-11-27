@@ -5,11 +5,12 @@
   "main": "API/app.js",
   "scripts": {
     "build": "babel API --out-dir build",
+    "clean": "rimraf build",
     "dev": "nodemon --exec babel-node API/app.js",
     "lint": "./node_modules/.bin/eslint .",
-    "prebuild": "npm run clean && npm run prettier",
+    "prettier": "prettier --single-quote --tab-width 4 --trailing-comma es5 --print-width 80 --write --no-bracket-spacing API/**/*.js",
     "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./.eslintrc.js,./README.md",
-    "start": "node API/app.js",
+    "start": "node build/app.js",
     "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit"
   },
   "engines": {
@@ -31,6 +32,7 @@
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "cloudinary": "^1.17.0",
+    "cors": "^2.8.5",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6-alpha.6",
