@@ -300,6 +300,56 @@ function () {
         }
       }, null, null, [[0, 21]]);
     }
+  }, {
+    key: "getEmployeeProfile",
+    value: function getEmployeeProfile(req, res) {
+      var id, employee;
+      return regeneratorRuntime.async(function getEmployeeProfile$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              id = req.params.id;
+              _context4.next = 4;
+              return regeneratorRuntime.awrap(_Employee["default"].findOne({
+                where: {
+                  id: id
+                }
+              }));
+
+            case 4:
+              employee = _context4.sent;
+
+              if (id) {
+                _context4.next = 7;
+                break;
+              }
+
+              throw new Error('Invalid parameter');
+
+            case 7:
+              return _context4.abrupt("return", res.status(200).json({
+                status: 'success',
+                data: {
+                  employee: employee
+                }
+              }));
+
+            case 10:
+              _context4.prev = 10;
+              _context4.t0 = _context4["catch"](0);
+              return _context4.abrupt("return", res.status(500).json({
+                status: _context4.t0,
+                message: _context4.t0.message
+              }));
+
+            case 13:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, null, null, [[0, 10]]);
+    }
   }]);
 
   return AdminController;

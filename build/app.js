@@ -31,6 +31,8 @@ var _tag = _interopRequireDefault(require("./routes/tag.routes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// Database
+// Routes
 var app = (0, _express["default"])();
 var PORT = process.env.PORT || 8080;
 var VERSION_API = '/api/v1';
@@ -39,8 +41,7 @@ app.use(_bodyParser["default"].urlencoded({
   extended: true
 }));
 app.use((0, _expressFileupload["default"])());
-app.use((0, _cors["default"])()); // Database
-
+app.use((0, _cors["default"])());
 app.get('/', function (req, res) {
   res.status(200).send('It works!');
 }); // handler

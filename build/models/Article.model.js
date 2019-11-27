@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _database = _interopRequireDefault(require("../config/database"));
-
 var _sequelize = _interopRequireDefault(require("sequelize"));
+
+var _database = _interopRequireDefault(require("../config/database"));
 
 var _Employee = _interopRequireDefault(require("./Employee.model"));
 
@@ -49,12 +49,6 @@ Article.belongsToMany(_Tag["default"], {
   as: 'tags',
   constraints: true,
   onDelete: 'CASCADE'
-}); // Tag.belongsToMany(Article, {
-//   through: 'ArticlesTag',
-//   as: 'articles',
-//   constraints: true,
-//   onDelete: 'CASCADE'
-// });
-
+});
 var _default = Article;
 exports["default"] = _default;
