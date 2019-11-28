@@ -1,1 +1,1 @@
-web: node API/app.js
+web: npm run dev

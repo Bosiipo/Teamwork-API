@@ -2,7 +2,6 @@
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
-    "eslint quotes": ["error", "double"]
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "no-console": "off",
