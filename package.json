@@ -4,7 +4,7 @@
   "description": "",
   "main": "API/app.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel API --out-dir build",
+    "build": "./node_modules/.bin/babel API -s --out-dir build",
     "clean": "rimraf build",
     "dev": "nodemon --exec babel-node API/app.js",
     "heroku-postbuild": "npm run build",
