@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 // Option 1: Passing parameters separately
-module.exports = new Sequelize(process.env.DATABASE_URL, {
+module.exports = new Sequelize('teamwork', 'postgres', 'Milky5way$', {
   host: 'localhost',
   dialect: 'postgres',
   protocol: 'postgres'
