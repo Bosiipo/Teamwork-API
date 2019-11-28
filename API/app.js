@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
+import Sequelize from 'sequelize';
 
 // Database
 import db from './config/database';
@@ -36,7 +37,8 @@ app.use(`${VERSION_API}/gifs`, gifRoutes);
 app.use(`${VERSION_API}/tags`, tagRoutes);
 
 // Test db
-db.sync()
+db.sequelize
+  .sync()
   .then(() => {
     app.listen(PORT);
     console.log(`Our app is running on port ${PORT}`);
