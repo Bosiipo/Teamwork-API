@@ -37,8 +37,7 @@ app.use(`${VERSION_API}/gifs`, gifRoutes);
 app.use(`${VERSION_API}/tags`, tagRoutes);
 
 // Test db
-db.sequelize
-  .sync()
+db.sync()
   .then(() => {
     app.listen(PORT);
     console.log(`Our app is running on port ${PORT}`);
