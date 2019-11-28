@@ -10,7 +10,6 @@
     "heroku-postbuild": "npm run build",
     "lint": "./node_modules/.bin/eslint .",
     "prettier": "prettier --single-quote --tab-width 4 --trailing-comma es5 --print-width 80 --write --no-bracket-spacing API/**/*.js",
-    "build-babel": "babel ./ --out-dir build/ --ignore ./node_modules,./.babelrc,./package.json,./.eslintrc.js,./README.md",
     "start": "node build/app.js",
     "test": "nyc mocha -r esm --recursive API/test -t 5000 --exit"
   },
