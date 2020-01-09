@@ -21,36 +21,36 @@ class AdminController {
         firstname,
         lastname,
         email,
-        password: hashedPassword
+        password: hashedPassword,
       });
       const safeAdmin = {
         id: admin.id,
         firstname: admin.firstname,
         lastname: admin.lastname,
-        email: admin.email
+        email: admin.email,
       };
       const jwtToken = jwt.sign(
         { admin: safeAdmin, isAdmin: true },
         config.secret,
         {
-          expiresIn: 86400
+          expiresIn: '500s',
         }
       );
       return res.status(201).json({
         status: 'success',
         message: 'Admin Registered',
         token: `Bearer ${jwtToken}`,
-        Admin: safeAdmin
+        Admin: safeAdmin,
       });
     } catch (err) {
       return res.status(500).json({
         status: 'error',
-        message: err.message
+        message: err.message,
       });
     }
   }
 
-  static async loginAdmin(req, res, next) {
+  static async loginAdmin(req, res) {
     try {
       const { email, password } = req.body;
       if (!email || !password) {
@@ -68,23 +68,24 @@ class AdminController {
         id: admin.id,
         firstname: admin.firstname,
         lastname: admin.lastname,
-        email: admin.email
+        email: admin.email,
       };
       const jwtToken = jwt.sign(
         { admin: safeAdmin, isAdmin: true },
         config.secret,
         { expiresIn: 86400 }
       );
+      //   res.redirect('/api/v1/auth/admin/create-user');
       return res.status(200).json({
         status: 'success',
         message: 'Admin Logged in',
         token: `Bearer ${jwtToken}`,
-        admin: safeAdmin
+        admin: safeAdmin,
       });
     } catch (err) {
       return res.status(500).json({
         status: 'error',
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -99,7 +100,7 @@ class AdminController {
         gender,
         jobRole,
         department,
-        address
+        address,
       } = req.body;
       if (
         !firstname ||
@@ -128,7 +129,7 @@ class AdminController {
         jobRole,
         department,
         address,
-        adminId
+        adminId,
       });
       const safeEmployee = {
         adminId,
@@ -139,21 +140,21 @@ class AdminController {
         gender: employee.gender,
         jobRole: employee.jobRole,
         department: employee.department,
-        address: employee.address
+        address: employee.address,
       };
       const jwtToken = jwt.sign({ employee: safeEmployee }, config.secret, {
-        expiresIn: 86400
+        expiresIn: 86400,
       });
       return res.status(201).json({
         status: 'success',
         message: 'Employee Registered',
         token: `Bearer ${jwtToken}`,
-        employee: safeEmployee
+        employee: safeEmployee,
       });
     } catch (err) {
       return res.status(500).json({
         error: err,
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -161,20 +162,36 @@ class AdminController {
   static async getEmployeeProfile(req, res) {
     try {
       const { id } = req.params;
-      const employee = await Employee.findOne({ where: { id } });
+      const employee = await Employee.findOne({
+        where: { id },
+        attributes: {
+          include: [
+            'id',
+            'firstname',
+            'lastname',
+            'email',
+            'password',
+            'gender',
+            'jobRole',
+            'department',
+            'address',
+          ],
+          exclude: ['password'],
+        },
+      });
       if (!id) {
         throw new Error('Invalid parameter');
       }
       return res.status(200).json({
         status: 'success',
         data: {
-          employee
-        }
+          employee,
+        },
       });
     } catch (error) {
       return res.status(500).json({
         status: error,
-        message: error.message
+        message: error.message,
       });
     }
   }

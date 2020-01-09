@@ -6,17 +6,17 @@ class ArticleController {
     try {
       const articles = await Article.findAll({
         where: { employeeId: req.employee.id },
-        order: [['createdAt', 'DESC']]
+        order: [['createdAt', 'DESC']],
       });
       return res.status(200).json({
         status: 'success',
         message: 'Successfully fetched Articles!',
-        data: articles
+        data: articles,
       });
     } catch (error) {
       return res.status(500).json({
         status: error,
-        message: error.message
+        message: error.message,
       });
     }
   }
@@ -31,21 +31,22 @@ class ArticleController {
       const newArticle = await Article.create({
         employeeId,
         title,
-        article
+        article,
       });
       return res.status(200).json({
         status: 'success',
         data: {
           articleId: employeeId,
           message: 'Article successfully posted',
-          title,
-          id: newArticle.id
-        }
+          // title,
+          // id: newArticle.id,
+          newArticle,
+        },
       });
     } catch (err) {
       res.status(500).json({
         error: err,
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -63,7 +64,7 @@ class ArticleController {
       // const { title, article } = req.body;
       const articleUpdate = {
         title: req.body.title,
-        article: req.body.article
+        article: req.body.article,
       };
       // const { title, article } = articleUpdate;
       await Article.update(
@@ -77,13 +78,13 @@ class ArticleController {
           articleId: article.employeeId,
           message: 'Article successfully updated!',
           title: articleUpdate.id,
-          article: articleUpdate.article
-        }
+          article: articleUpdate.article,
+        },
       });
     } catch (err) {
       res.status(500).json({
         error: err,
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -108,36 +109,13 @@ class ArticleController {
       return res.status(200).json({
         status: 'success',
         data: {
-          message: 'Article successfully deleted'
-        }
+          message: 'Article successfully deleted',
+        },
       });
     } catch (err) {
       return res.status(500).json({
         error: err,
-        message: err.message
-      });
-    }
-  }
-
-  static async addComment(req, res) {
-    try {
-      const articleId = req.params.id;
-      const { comment } = req.body;
-      const newComment = await Comment.create({
-        articleId: Number(articleId),
-        comment
-      });
-      return res.status(200).json({
-        status: 'success',
-        data: {
-          message: 'Comment successfully added!',
-          newComment
-        }
-      });
-    } catch (err) {
-      return res.status(500).json({
-        status: err,
-        message: err.message
+        message: err.message,
       });
     }
   }
@@ -152,13 +130,36 @@ class ArticleController {
       return res.status(200).json({
         status: 'success',
         data: {
-          article
-        }
+          article,
+        },
       });
     } catch (err) {
       return res.status(500).json({
         status: err,
-        message: err.message
+        message: err.message,
+      });
+    }
+  }
+
+  static async addComment(req, res) {
+    try {
+      const articleId = req.params.id;
+      const { comment } = req.body;
+      const newComment = await Comment.create({
+        articleId: Number(articleId),
+        comment,
+      });
+      return res.status(200).json({
+        status: 'success',
+        data: {
+          message: 'Comment successfully added!',
+          newComment,
+        },
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: err,
+        message: err.message,
       });
     }
   }

@@ -22,21 +22,22 @@ class EmployeeController {
         id: employee.id,
         firstname: employee.firstname,
         lastname: employee.lastname,
-        email: employee.email
+        email: employee.email,
+        role: employee.role,
       };
       const jwtToken = jwt.sign({ employee: safeEmployee }, config.secret, {
-        expiresIn: 86400
+        expiresIn: 86400,
       });
       return res.status(200).json({
         status: 'success',
         message: 'Employee Logged In',
         token: `Bearer ${jwtToken}`,
-        employee: safeEmployee
+        employee: safeEmployee,
       });
     } catch (err) {
       res.status(500).json({
         error: err,
-        message: err.message
+        message: err.message,
       });
     }
   }

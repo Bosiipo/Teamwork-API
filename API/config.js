@@ -1,6 +1,6 @@
 // config.js
 const config = {
-    secret: 'supersecret',
+  secret: 'supersecret',
 };
 
 export default config;

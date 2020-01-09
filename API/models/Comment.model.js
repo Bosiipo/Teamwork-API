@@ -6,13 +6,13 @@ const Comment = db.define('comment', {
     type: Sequelize.INTEGER,
     allowNull: false,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   comment: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   createdAt: Sequelize.DATEONLY,
-  updatedAt: Sequelize.DATEONLY
+  updatedAt: Sequelize.DATEONLY,
 });
 
 export default Comment;

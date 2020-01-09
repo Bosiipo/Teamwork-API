@@ -1,50 +1,53 @@
+import Sequelize from 'sequelize';
 import Admin from './Admin.model';
-
-const Sequelize = require('sequelize');
-const db = require('../config/database');
+import db from '../config/database';
 
 const Employee = db.define('employee', {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   firstname: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   lastname: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    unique: true,
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   gender: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   jobRole: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   department: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   address: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+  },
+  role: {
+    type: Sequelize.STRING,
+    defaultValue: 'Employee',
   },
   createdAt: Sequelize.DATEONLY,
-  updatedAt: Sequelize.DATEONLY
+  updatedAt: Sequelize.DATEONLY,
 });
 
 Admin.hasMany(Employee, { constraints: true, onDelete: 'CASCADE' });

@@ -1,23 +1,29 @@
-const Sequelize = require("sequelize");
-const db = require("../config/database");
+import Sequelize from 'sequelize';
+import db from '../config/database';
 
-const Admin = db.define("admin", {
+const Admin = db.define('admin', {
   firstname: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   lastname: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
-  }
+    allowNull: false,
+  },
+  role: {
+    type: Sequelize.STRING,
+    defaultValue: 'Admin',
+  },
+  createdAt: Sequelize.DATEONLY,
+  updatedAt: Sequelize.DATEONLY,
 });
 
 export default Admin;

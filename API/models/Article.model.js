@@ -9,18 +9,18 @@ const Article = db.define('article', {
     type: Sequelize.INTEGER,
     allowNull: false,
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   title: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   article: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   createdAt: Sequelize.DATEONLY,
-  updatedAt: Sequelize.DATEONLY
+  updatedAt: Sequelize.DATEONLY,
 });
 
 Article.belongsTo(Employee, { constraints: true, onDelete: 'CASCADE' });
@@ -29,7 +29,7 @@ Article.belongsToMany(Tag, {
   through: 'ArticlesTag',
   as: 'tags',
   constraints: true,
-  onDelete: 'CASCADE'
+  onDelete: 'CASCADE',
 });
 
 export default Article;
