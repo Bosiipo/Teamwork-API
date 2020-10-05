@@ -6,9 +6,9 @@ import Comment from '../models/Comment.model';
 const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
-  cloud_name: 'bosiipo',
-  api_key: '682779169825433',
-  api_secret: 'SC7UQjHcHENf7qw5TyvrxLzkE-4',
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 class GifController {
